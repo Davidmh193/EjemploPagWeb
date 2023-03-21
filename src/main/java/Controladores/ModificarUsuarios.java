@@ -30,7 +30,7 @@ public class ModificarUsuarios extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("Menu").forward(request,response);
+		request.getRequestDispatcher("ModificarUsuarios.jsp").forward(request,response);
 	}
 
 	/**

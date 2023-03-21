@@ -23,7 +23,7 @@
     <a class="nav-link active" aria-current="page" href="Insertar">Insertar</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Modificar</a>
+    <a class="nav-link active" href="ModificarUsuarios">Modificar</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
@@ -39,7 +39,7 @@
         out.print("<tr>");
         out.print("<td>" + usuarios.get(i).getId() + "</td>");
         out.print("<td>" + usuarios.get(i).getNombre() + "</td>");
-        out.print("<td><a class='btn btn-primary' href='/ProyectoWebPolideportivo/ModificarUsuario?id=" + usuarios.get(i).getId() + "'>Modificar</a></td>");
+        out.print("<td><a class='btn btn-primary' href='/ProyectoWebPolideportivo/ModificarUsuarios?id=" + usuarios.get(i).getId() + "'>Modificar</a></td>");
         out.print("<td><a class='btn btn-danger' href='/ProyectoWebPolideportivo/EliminarUsuario?id=" + usuarios.get(i).getId() + "'>Eliminar</a></td>");
         out.print("</tr>");
         

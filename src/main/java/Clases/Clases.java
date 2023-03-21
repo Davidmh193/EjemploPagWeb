@@ -8,6 +8,24 @@ import java.util.ArrayList;
 public class Clases {
 	private int id;
 	private String nombre;
+	private String dni;
+	private String codigo;
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public int getId() {
 		return id;
@@ -59,15 +77,17 @@ public class Clases {
 
 	}
 
-	public static void modificarClienteJframe(int id, String Nombre) throws ClassNotFoundException {
+	public void modificarCliente(int id, String Nombre,String dni, String codigo) throws ClassNotFoundException {
 
 		try {
 			Conector conector = new Conector();
 			conector.conectar();
 
-			PreparedStatement pSt = conector.getCon().prepareStatement("UPDATE usuarios SET nombre_apellido= ? WHERE id = ?");
+			PreparedStatement pSt = conector.getCon().prepareStatement("UPDATE usuarios SET nombre_apellido= ?, dni=?,codigo=?  WHERE id = ?");
 			pSt.setString(1, Nombre);
-			pSt.setInt(2, id);
+			pSt.setString(2, dni);
+			pSt.setString(3, codigo);
+			pSt.setInt(4, id);
 			pSt.execute();
 		} catch (SQLException e) {
 

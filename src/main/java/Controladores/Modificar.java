@@ -1,11 +1,14 @@
 package Controladores;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Clases.Clases;
 
 /**
  * Servlet implementation class Modificar
@@ -26,17 +29,33 @@ public class Modificar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		request.getRequestDispatcher("ModificarUsuarios").forward(request,response);
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int id =  Integer.parseInt(request.getParameter("id"));
+		String nombre = request.getParameter("nombre");
+		String dni = request.getParameter("dni");
+		String codigo = request.getParameter("codigo");
+		Clases cliente = new Clases();
+		
+		try {
+			cliente.modificarCliente(id, nombre, dni, codigo);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	request.getRequestDispatcher("ModificarUsuarios").forward(request,response);
+	
+		
+		
 	}
 
 }
