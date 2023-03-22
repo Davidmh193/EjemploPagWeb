@@ -10,6 +10,8 @@ public class Clases {
 	private String nombre;
 	private String dni;
 	private String codigo;
+	private String password;
+
 
 	public String getDni() {
 		return dni;
@@ -17,6 +19,14 @@ public class Clases {
 
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getCodigo() {
@@ -48,12 +58,13 @@ public class Clases {
 		Conector conector = new Conector();
 		conector.conectar();
 
-		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT id, nombre_apellido FROM usuarios");
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT id, nombre_apellido,password FROM usuarios");
 		ResultSet resultado = pSt.executeQuery();
 		while (resultado.next()) {
 			Clases usuario = new Clases();
 			usuario.setId(resultado.getInt("id"));
 			usuario.setNombre(resultado.getString("nombre_apellido"));
+			usuario.setPassword(resultado.getString("password"));
 			usuarios.add(usuario);
 		}
 		pSt.close();
@@ -77,17 +88,18 @@ public class Clases {
 
 	}
 
-	public void modificarCliente(int id, String Nombre,String dni, String codigo) throws ClassNotFoundException {
+	public void modificarCliente(int id, String Nombre,String dni, String codigo,String password) throws ClassNotFoundException {
 
 		try {
 			Conector conector = new Conector();
 			conector.conectar();
 
-			PreparedStatement pSt = conector.getCon().prepareStatement("UPDATE usuarios SET nombre_apellido= ?, dni=?,codigo=?  WHERE id = ?");
+			PreparedStatement pSt = conector.getCon().prepareStatement("UPDATE usuarios SET nombre_apellido= ?, dni=?,codigo=?, password=?  WHERE id = ?");
 			pSt.setString(1, Nombre);
 			pSt.setString(2, dni);
 			pSt.setString(3, codigo);
-			pSt.setInt(4, id);
+			pSt.setString(4, password);
+			pSt.setInt(5, id);
 			pSt.execute();
 		} catch (SQLException e) {
 

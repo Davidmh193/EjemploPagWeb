@@ -35,11 +35,11 @@
   </div>
   <div class="mb-3" Style="margin-left:2%; with:20%;">
     <label for="exampleInputPassword1" class="form-label">Dni</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="dni">
+    <input type="text" class="form-control" id="exampleInputPassword2" name="dni">
   </div>
   <div class="mb-3" Style="margin-left:2%; with:20%;">
     <label for="exampleInputPassword1" class="form-label">Codigo</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="codigo">
+    <input type="text" class="form-control" id="exampleInputPassword3" name="codigo">
   </div>
   <button type="submit" class="btn btn-primary"Style="margin-left:2%; with:50%;">Guardar</button>
 </form>

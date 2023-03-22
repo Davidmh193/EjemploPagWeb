@@ -30,7 +30,14 @@
   </li>
 </ul>
 <table class="table table-dark table-striped">
-
+<thead>
+<tr>
+<th scope="col">Id</th>
+<th scope="col">Nombre</th>
+<th scope="col">Password</th>
+<th scope="col">Modificar</th>
+<th scope="col">Eliminar</th>
+</tr>
 	<%
 	ArrayList<Clases> usuarios = (ArrayList<Clases>) request.getAttribute("usuarios");
 	%>
@@ -39,13 +46,15 @@
         out.print("<tr>");
         out.print("<td>" + usuarios.get(i).getId() + "</td>");
         out.print("<td>" + usuarios.get(i).getNombre() + "</td>");
+        out.print("<td>" + usuarios.get(i).getPassword() + "</td>");
         out.print("<td><a class='btn btn-primary' href='/ProyectoWebPolideportivo/ModificarUsuarios?id=" + usuarios.get(i).getId() + "'>Modificar</a></td>");
         out.print("<td><a class='btn btn-danger' href='/ProyectoWebPolideportivo/EliminarUsuario?id=" + usuarios.get(i).getId() + "'>Eliminar</a></td>");
         out.print("</tr>");
         
     }
 	%>
-	
+
+</thead>
 </table>
 </body>
 </html>

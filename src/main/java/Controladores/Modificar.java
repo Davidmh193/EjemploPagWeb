@@ -1,6 +1,8 @@
 package Controladores;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,10 +44,13 @@ public class Modificar extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String dni = request.getParameter("dni");
 		String codigo = request.getParameter("codigo");
+		String password = request.getParameter("password");
 		Clases cliente = new Clases();
+	
+	
 		
 		try {
-			cliente.modificarCliente(id, nombre, dni, codigo);
+			cliente.modificarCliente(id, nombre, dni, codigo, password);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
