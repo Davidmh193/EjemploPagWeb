@@ -1,7 +1,7 @@
 package Controladores;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -45,12 +45,17 @@ public class Modificar extends HttpServlet {
 		String dni = request.getParameter("dni");
 		String codigo = request.getParameter("codigo");
 		String password = request.getParameter("password");
+		String Fecha_Login = request.getParameter("fecha_login");
 		Clases cliente = new Clases();
+        java.util.Date fecha = null;
+        try {
+        	fecha = new SimpleDateFormat("yyyy-MM-dd").parse(Fecha_Login);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 	
-	
-		
 		try {
-			cliente.modificarCliente(id, nombre, dni, codigo, password);
+			cliente.modificarCliente(id, nombre, dni, codigo, password,fecha);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

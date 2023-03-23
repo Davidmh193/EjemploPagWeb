@@ -1,5 +1,6 @@
 package Clases;
 
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,16 @@ public class Clases {
 	private String dni;
 	private String codigo;
 	private String password;
+	private Date Fecha_login;
 
+
+	public Date getFecha_login() {
+		return Fecha_login;
+	}
+
+	public void setFecha_login(Date fecha_login) {
+		this.Fecha_login = fecha_login;
+	}
 
 	public String getDni() {
 		return dni;
@@ -88,18 +98,19 @@ public class Clases {
 
 	}
 
-	public void modificarCliente(int id, String Nombre,String dni, String codigo,String password) throws ClassNotFoundException {
+	public void modificarCliente(int id, String Nombre,String dni, String codigo,String password, Date Fecha_login) throws ClassNotFoundException {
 
 		try {
 			Conector conector = new Conector();
 			conector.conectar();
 
-			PreparedStatement pSt = conector.getCon().prepareStatement("UPDATE usuarios SET nombre_apellido= ?, dni=?,codigo=?, password=?  WHERE id = ?");
+			PreparedStatement pSt = conector.getCon().prepareStatement("UPDATE usuarios SET nombre_apellido= ?, dni=? ,codigo=?, password=?,fecha_login=?  WHERE id = ?");
 			pSt.setString(1, Nombre);
 			pSt.setString(2, dni);
 			pSt.setString(3, codigo);
 			pSt.setString(4, password);
-			pSt.setInt(5, id);
+			pSt.setDate(5, new java.sql.Date( Fecha_login.getTime()));
+			pSt.setInt(6, id);
 			pSt.execute();
 		} catch (SQLException e) {
 
@@ -108,15 +119,17 @@ public class Clases {
 
 	}
 
-	public void InsertarUsuarios(String Nombre,String dni, String Codigo) throws ClassNotFoundException{
+	public void InsertarUsuarios(String Nombre,String dni, String Codigo,String password, Date Fecha_login) throws ClassNotFoundException{
 		try {
 			Conector conector = new Conector();
 			conector.conectar();
 
-			PreparedStatement pSt = conector.getCon().prepareStatement("INSERT INTO usuarios (nombre_apellido,dni,codigo) Values (?,?,?)");
+			PreparedStatement pSt = conector.getCon().prepareStatement("INSERT INTO usuarios (nombre_apellido, dni, codigo, password, fecha_login) Values (?,?,?,?,?)");
 			pSt.setString(1, Nombre);
 			pSt.setString(2, dni);
 			pSt.setString(3, Codigo);
+			pSt.setString(4, password);
+			pSt.setDate(5, new java.sql.Date( Fecha_login.getTime()));
 			pSt.execute();
 		} catch (SQLException e) {
 

@@ -1,6 +1,9 @@
 package Controladores;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,10 +39,19 @@ public class Insertar extends HttpServlet {
 			String nombre = request.getParameter("nombre");
 			String dni = request.getParameter("dni");
 			String codigo = request.getParameter("codigo");
+			String password = request.getParameter("password");
+			String Fecha_Login = request.getParameter("fecha_login");
 			Clases cliente = new Clases();
+	        java.util.Date fecha = null;
 			
+	
+	        try {
+	        	fecha = new SimpleDateFormat("yyyy-MM-dd").parse(Fecha_Login);
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
 			try {
-				cliente.InsertarUsuarios(nombre, dni, codigo);
+				cliente.InsertarUsuarios(nombre, dni, codigo,password ,fecha);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

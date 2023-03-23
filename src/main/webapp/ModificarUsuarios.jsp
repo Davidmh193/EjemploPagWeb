@@ -50,6 +50,10 @@
     <label for="password" class="form-label">password</label>
     <input type="text" class="form-control" id="exampleInputPassword3" name="password">
   </div>
+  <div class="mb-3" style="margin-left: 25px;">
+    <label for="exampleInputPassword1" class="form-label">Fecha</label>
+    <input type="Date" class="form-control" id="exampleInputPassword3" name="fecha_login">
+  </div>
   <button type="submit" class="btn btn-primary" style="margin-left: 25px;">Guardar</button>
 </form>
 

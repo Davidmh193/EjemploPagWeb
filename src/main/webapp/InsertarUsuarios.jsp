@@ -41,6 +41,14 @@
     <label for="exampleInputPassword1" class="form-label">Codigo</label>
     <input type="text" class="form-control" id="exampleInputPassword3" name="codigo">
   </div>
+  <div class="mb-3" Style="margin-left:2%; with:20%;">
+    <label for="exampleInputPassword1" class="form-label">password</label>
+    <input type="password" class="form-control" id="exampleInputPassword3" name="password">
+  </div>
+  <div class="mb-3" Style="margin-left:2%; with:20%;">
+    <label for="exampleInputPassword1" class="form-label">Fecha_login</label>
+    <input type="Date" class="form-control" id="exampleInputPassword3" name="fecha_login">
+  </div>
   <button type="submit" class="btn btn-primary"Style="margin-left:2%; with:50%;">Guardar</button>
 </form>
 
